@@ -1,0 +1,14 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/Noah/Documents/Projects/C/simsong-presenter/build/cmake_install.cmake",
+		"/home/Noah/Documents/Projects/C/simsong-presenter/build/lib/SDL/cmake_install.cmake",
+		"/home/Noah/Documents/Projects/C/simsong-presenter/build/lib/SDL_image/cmake_install.cmake",
+		"/home/Noah/Documents/Projects/C/simsong-presenter/build/lib/SDL_ttf/cmake_install.cmake",
+		"/home/Noah/Documents/Projects/C/simsong-presenter/build/lib/SDL_ttf/external/harfbuzz-build/cmake_install.cmake",
+		"/home/Noah/Documents/Projects/C/simsong-presenter/build/lib/SDL_ttf/external/freetype-build/cmake_install.cmake",
+		"/home/Noah/Documents/Projects/C/simsong-presenter/build/lib/SDL_ttf/external/plutovg-build/cmake_install.cmake",
+		"/home/Noah/Documents/Projects/C/simsong-presenter/build/lib/SDL_ttf/external/plutosvg-guild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
