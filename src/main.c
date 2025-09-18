@@ -1,6 +1,9 @@
 #include "SDL3/SDL_init.h"
 #include "SDL3/SDL_log.h"
+#include "SDL3/SDL_mouse.h"
 #include "SDL3_ttf/SDL_ttf.h"
+#include "clay/clay_layout.h"
+#include <stdio.h>
 #define SDL_MAIN_USE_CALLBACKS 1
 #include <SDL3/SDL_main.h>
 #include <SDL3/SDL.h>
@@ -9,6 +12,7 @@
 #include "clay/clay_renderer.h"
 #include "app.h"
 #include "utils.h"
+#include "clay/clay_layout.h"
 
 const int WINDOW_W = 800;
 const int WINDOW_H = 450;
@@ -51,14 +55,22 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to init TTF");
         return SDL_APP_FAILURE;
     }
-    newAppstate->rendererData.fonts = safe_malloc(sizeof(TTF_Font*));
+
+    const int fontCount = 3;
+    newAppstate->rendererData.fonts = safe_malloc(sizeof(TTF_Font*) * fontCount);
     newAppstate->rendererData.fonts[0] = TTF_OpenFont("resources/CaskaydiaMonoNerdFont-Regular.ttf", 20);
-    for (int i = 0; i < 1; i++) {
+    newAppstate->rendererData.fonts[1] = TTF_OpenFont("resources/FunnelSans/FunnelSans-Medium.ttf", 20);
+    newAppstate->rendererData.fonts[2] = TTF_OpenFont("resources/Brawler/Brawler-Regular.ttf", 20);
+    for (int i = 0; i < fontCount; i++) {
         if (!newAppstate->rendererData.fonts[i]) {
-            SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to allocate memory for the font array: %s", SDL_GetError());
+            SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to open font!");
             return SDL_APP_FAILURE;
         }
     }
+    
+    //laod images
+    Layout_Initialize(newAppstate->rendererData.renderer);
+
 
 // --- Clay ---
     uint64_t clayMinMemory = Clay_MinMemorySize();
@@ -66,28 +78,26 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
     Clay_Initialize(arena, (Clay_Dimensions){ (float) WINDOW_W, (float) WINDOW_H }, (Clay_ErrorHandler){ HandleClayErrors });
     Clay_SetMeasureTextFunction(SDL_MeasureText, newAppstate->rendererData.fonts);
 
-    Clay_SetDebugModeEnabled(true);
     *appstate = newAppstate;
     return SDL_APP_CONTINUE;
 }
 
 SDL_AppResult SDL_AppEvent(void* voidstate, SDL_Event* event) {
+    Appstate* appstate = (Appstate*)voidstate;
     switch (event->type) {
         case SDL_EVENT_QUIT:
             return SDL_APP_SUCCESS;
         case SDL_EVENT_WINDOW_RESIZED:
             Clay_SetLayoutDimensions((Clay_Dimensions) { (float) event->window.data1, (float) event->window.data2 });
             break;
-        case SDL_EVENT_MOUSE_MOTION:
-            Clay_SetPointerState((Clay_Vector2) { event->motion.x, event->motion.y },
-                event->motion.state & SDL_BUTTON_LMASK);
-            break;
         case SDL_EVENT_MOUSE_BUTTON_DOWN:
-            Clay_SetPointerState((Clay_Vector2) { event->button.x, event->button.y },
-                event->button.button == SDL_BUTTON_LEFT);
+            appstate->pointerDown = event->button.button == SDL_BUTTON_LEFT;
+            break;
+        case SDL_EVENT_MOUSE_BUTTON_UP:
+            appstate->pointerDown = !(event->button.button == SDL_BUTTON_LEFT);
             break;
         case SDL_EVENT_MOUSE_WHEEL:
-            Clay_UpdateScrollContainers(true, (Clay_Vector2) { event->wheel.x, event->wheel.y }, 0.01f);
+            appstate->scrollDelta = (Clay_Vector2) { event->wheel.x, event->wheel.y };
             break;
     }
     return SDL_APP_CONTINUE;
@@ -97,18 +107,19 @@ SDL_AppResult SDL_AppIterate(void* voidstate) {
     Appstate* appstate = (Appstate*)voidstate;
     //calculate deltatime
     Uint64 tick = SDL_GetTicks();
-    const double delta = appstate->previousTick - tick / 1000.0;
+    const double delta = (appstate->previousTick - tick) / 1000.0;
+
+    float pX, pY = 0;
+    SDL_GetMouseState(&pX, &pY);
+    Clay_SetPointerState((Clay_Vector2){ pX, pY }, appstate->pointerDown);
+    Clay_UpdateScrollContainers(true, appstate->scrollDelta, delta);
 
     //clear
     SDL_SetRenderDrawColor(appstate->rendererData.renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(appstate->rendererData.renderer);
     
     Clay_BeginLayout();
-    CLAY(CLAY_ID("Main"), { .layout = { .sizing = { .height = CLAY_SIZING_GROW(0), .width = CLAY_SIZING_GROW(0) }, .padding = CLAY_PADDING_ALL(15) }, .backgroundColor = { 25, 25, 25, 255 } }) {
-        CLAY(CLAY_ID("InnerRect"), { .layout = { .sizing = { .height = CLAY_SIZING_GROW(0), .width = CLAY_SIZING_GROW(0) }, .padding = CLAY_PADDING_ALL(15)}, .backgroundColor = {200, 200, 200, 255}, .cornerRadius = 15 }) {
-
-        }
-    }
+    Layout_Render();
     Clay_RenderCommandArray renderCommands = Clay_EndLayout();
     SDL_Clay_RenderClayCommands(&appstate->rendererData, &renderCommands);
 

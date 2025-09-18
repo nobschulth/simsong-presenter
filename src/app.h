@@ -9,6 +9,8 @@ typedef struct Appstate {
     SDL_Window* sdlWindow;
     Uint64 previousTick;
     Clay_SDL3RendererData rendererData;
+    bool pointerDown;
+    Clay_Vector2 scrollDelta;
 } Appstate;
 
 void appstate_free(Appstate* appstate);
