@@ -1,12 +1,16 @@
+#include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <SDL3/SDL.h>
 #include <stdlib.h>
+#include <string.h>
+#include "SDL3/SDL_clipboard.h"
 #include "SDL3/SDL_log.h"
 #include "SDL3_image/SDL_image.h"
 #include "clay.h"
 #include "clay_layout.h"
 #include "../utils.h"
+#include "../song.h"
 
 const Clay_Color COLOR_BLACK = { 0, 0, 0, 255 };
 const Clay_Color COLOR_BLACK_BG = { 17, 17, 17, 255 };
@@ -27,6 +31,8 @@ const Clay_ElementDeclaration elementBg = {
 };
 
 SDL_Texture** images = NULL;
+Song* currentSong = NULL;
+size_t currentSelected = 0;
 
 void Layout_Initialize(SDL_Renderer* renderer) {
     const int imageCount = 1;
@@ -42,7 +48,11 @@ void Layout_Initialize(SDL_Renderer* renderer) {
 
 void Layout_Button_Start(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
     if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
-        printf("%s\n", SDL_GetClipboardText());
+        char* clipboardText = SDL_GetClipboardText();
+        Song* song = Song_CreateFromString(clipboardText);
+        if (!song) { return; }
+        currentSong = song;
+        currentSelected = 0;
     }
 }
 
@@ -64,8 +74,11 @@ void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId 
 }
 
 void Layout_Render() {
-    //Layout_Main();
-    Layout_Song1();
+    if (currentSong) {
+        Layout_Song1();
+    } else {
+        Layout_Main();
+    }
 }
 
 void Layout_Main() {
@@ -87,6 +100,12 @@ void Layout_Main() {
     }
 }
 
+void Layout_Button_Tabbar(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
+    if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
+        currentSelected = ((LayoutButtonTabbar*)userData)->id;
+    }
+}
+
 void Layout_Componenet_Tabbar() {
     CLAY(CLAY_ID("Tabbar"), {
         .layout = {
@@ -97,20 +116,23 @@ void Layout_Componenet_Tabbar() {
         .clip = { .horizontal = true, .childOffset = Clay_GetScrollOffset() }
     }) {
         //render the clickable items
-        uint32_t selected = 2;
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < currentSong->elementCount; i++) {
+            LayoutButtonTabbar* btnData = safe_malloc(sizeof(LayoutButtonTabbar));
+            btnData->id = i;
+            char* currentTitle = currentSong->elements[i].name;
             CLAY(CLAY_IDI("TabbarItem", i), {
-                .backgroundColor = i == selected ? COLOR_WHITE : COLOR_BLACK_BG,
+                .backgroundColor = i == currentSelected ? COLOR_WHITE : COLOR_BLACK_BG,
                 .layout = {
                     .padding = CLAY_PADDING_ALL(5),
                     .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER }
-                }
+                },
             }) {
-                CLAY_TEXT(CLAY_STRING("Item 2"), CLAY_TEXT_CONFIG({
+                Clay_OnHover(Layout_Button_Tabbar, (intptr_t)btnData);
+                CLAY_TEXT(((Clay_String){ .chars = currentTitle, .length = strlen(currentTitle), .isStaticallyAllocated = false}), CLAY_TEXT_CONFIG({
                     .textAlignment = CLAY_TEXT_ALIGN_CENTER,
                     .fontId = 1,
                     .fontSize = 32,
-                    .textColor = i == selected ? COLOR_BLACK_BG : COLOR_WHITE,
+                    .textColor = i == currentSelected ? COLOR_BLACK_BG : COLOR_WHITE,
                 }));
             }
         }
@@ -118,6 +140,9 @@ void Layout_Componenet_Tabbar() {
 }
 
 void Layout_Song1() {
+    Clay_String stringCredits = { .chars = currentSong->licence, .isStaticallyAllocated = false, .length = strlen(currentSong->licence) };
+    Clay_String stringTitle = { .chars = currentSong->title, .isStaticallyAllocated = false, .length = strlen(currentSong->title) };
+    char* currentText = currentSong->elements[currentSelected].text;
     CLAY(CLAY_ID("Song1"), {
         .backgroundColor = COLOR_BLACK_BG, 
         .layout = {
@@ -136,13 +161,27 @@ void Layout_Song1() {
         }) {
             Layout_Componenet_Tabbar();
             CLAY_AUTO_ID({.layout = { .sizing = { .height = CLAY_SIZING_PERCENT(0.2) } }}) {}
-            CLAY_TEXT(CLAY_STRING("Liedtext lorem impsum\nirelium de riesa.\nQua corrium da sie rum.\nLiemun sier krea.\nLeat zera strop."), CLAY_TEXT_CONFIG({
+            /*CLAY_TEXT((Clay_String){ .chars = currentSong->elements[currentSelected].text, .isStaticallyAllocated = false, .length = strlen(currentSong->elements[currentSelected].text) }, CLAY_TEXT_CONFIG({
                 .textColor = COLOR_WHITE,
                 .fontId = 1,
                 .fontSize = 60,
                 .textAlignment = CLAY_TEXT_ALIGN_CENTER,
-            })); 
+            })); */
+            CLAY_AUTO_ID({
+                .layout = {
+                    .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER },
+                    .padding = { .left = 30, .right = 30 }
+                }
+            }) {
+            CLAY_TEXT(((Clay_String){ .chars = currentText, .length = strlen(currentText), .isStaticallyAllocated = false }), CLAY_TEXT_CONFIG({
+                .textColor = COLOR_WHITE,
+                .fontId = 1,
+                .fontSize = 60,
+                .textAlignment = CLAY_TEXT_ALIGN_CENTER,
+            }));
+            }
             //Credits
+            CLAY_TEXT((Clay_String){ .chars = "123" }, CLAY_TEXT_CONFIG({ .fontId = 2 }));
             CLAY_AUTO_ID({
                 .layout = {
                     .childAlignment = { .x = CLAY_ALIGN_X_LEFT, .y = CLAY_ALIGN_Y_BOTTOM },
@@ -150,7 +189,7 @@ void Layout_Song1() {
                     .padding = CLAY_PADDING_ALL(10),
                 }
             }) {
-                CLAY_TEXT(CLAY_STRING("©Lizens:\nlorem impsum\nirelium de riesa ©Qua corrium da sie rum. Liemun sier krea Leat zera strop."), CLAY_TEXT_CONFIG({
+                CLAY_TEXT(stringCredits, CLAY_TEXT_CONFIG({
                     .textColor = COLOR_WHITE,
                     .fontId = 1,
                     .fontSize = 10,
@@ -177,16 +216,16 @@ void Layout_Song1() {
             CLAY_AUTO_ID({
                 .backgroundColor = COLOR_ACCENT_RED_ALPHA,
                 .layout = {
-                    .sizing = { .height = CLAY_SIZING_FIT(), .width = CLAY_SIZING_GROW() },
+                    .sizing = { .height = CLAY_SIZING_FIT(), .width = CLAY_SIZING_PERCENT(1) },
                     .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER },
                     .padding = CLAY_PADDING_ALL(20),
                 }
             }) {
-                CLAY_TEXT(CLAY_STRING("Songtitel\n Sehr lang"), CLAY_TEXT_CONFIG({
+                CLAY_TEXT(stringTitle, CLAY_TEXT_CONFIG({
                     .fontId = 2,
                     .fontSize = 56,
                     .textColor = COLOR_WHITE,
-                    .textAlignment = CLAY_TEXT_ALIGN_CENTER
+                    .textAlignment = CLAY_TEXT_ALIGN_CENTER,
                 }));
             }
         }
