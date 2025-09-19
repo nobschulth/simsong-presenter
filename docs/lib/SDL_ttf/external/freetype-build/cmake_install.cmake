@@ -43,14 +43,14 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "headers" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/freetype2/freetype/config" TYPE FILE FILES
-    "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/freetype-build/include/freetype/config/ftconfig.h"
-    "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/freetype-build/include/freetype/config/ftoption.h"
+    "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/freetype-build/include/freetype/config/ftconfig.h"
+    "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/freetype-build/include/freetype/config/ftoption.h"
     )
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/freetype-build/install_local_manifest.txt"
+  file(WRITE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/freetype-build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

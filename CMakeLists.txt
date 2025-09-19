@@ -41,7 +41,9 @@ endif()
 
 #add source files
 file(GLOB_RECURSE SOURCES "src/*.c")
+list(REMOVE_ITEM SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/emscripten_clipboard.c")
 add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
+
 
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3 SDL3_image::SDL3_image SDL3_ttf::SDL3_ttf) 
 
@@ -55,6 +57,6 @@ add_custom_command(
 
 if(EMSCRIPTEN)
     set_target_properties(${PROJECT_NAME} PROPERTIES
-        LINK_FLAGS "--preload-file ${CMAKE_SOURCE_DIR}/resources@/resources -s EXPORTED_RUNTIME_METHODS=['requestFullscreen'] -sALLOW_MEMORY_GROWTH "
+        LINK_FLAGS "--preload-file ${CMAKE_SOURCE_DIR}/resources@/resources -s EXPORTED_RUNTIME_METHODS=['requestFullscreen'] -sALLOW_MEMORY_GROWTH -sEXPORTED_RUNTIME_METHODS=[ccall,UTF8ToString,stringToUTF8,lengthBytesUTF8]"
     )
 endif()

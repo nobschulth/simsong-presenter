@@ -11,6 +11,7 @@
 #include "clay_layout.h"
 #include "../utils.h"
 #include "../song.h"
+#include "../emscripten_clipboard.c"
 
 const Clay_Color COLOR_BLACK = { 0, 0, 0, 255 };
 const Clay_Color COLOR_BLACK_BG = { 17, 17, 17, 255 };
@@ -48,8 +49,11 @@ void Layout_Initialize(SDL_Renderer* renderer) {
 
 void Layout_Button_Start(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
     if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
-        char* clipboardText = SDL_GetClipboardText();
+        char* clipboardText = get_clipboard_text();//SDL_GetClipboardText();
         Song* song = Song_CreateFromString(clipboardText);
+        if (!song) {
+            clipboardText = SDL_GetClipboardText();
+        }
         if (!song) { return; }
         currentSong = song;
         currentSelected = 0;

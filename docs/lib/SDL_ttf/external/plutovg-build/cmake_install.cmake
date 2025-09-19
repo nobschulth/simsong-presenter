@@ -42,14 +42,14 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/plutovg-build/libplutovg.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/plutovg-build/libplutovg.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/plutovg/plutovgTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/plutovg/plutovgTargets.cmake"
-         "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/plutovg-build/CMakeFiles/Export/f6ef2f3f18222bc8084975f00f853305/plutovgTargets.cmake")
+         "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/plutovg-build/CMakeFiles/Export/f6ef2f3f18222bc8084975f00f853305/plutovgTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/plutovg/plutovgTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -62,26 +62,26 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/plutovg" TYPE FILE FILES "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/plutovg-build/CMakeFiles/Export/f6ef2f3f18222bc8084975f00f853305/plutovgTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/plutovg" TYPE FILE FILES "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/plutovg-build/CMakeFiles/Export/f6ef2f3f18222bc8084975f00f853305/plutovgTargets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/plutovg" TYPE FILE FILES "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/plutovg-build/CMakeFiles/Export/f6ef2f3f18222bc8084975f00f853305/plutovgTargets-noconfig.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/plutovg" TYPE FILE FILES "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/plutovg-build/CMakeFiles/Export/f6ef2f3f18222bc8084975f00f853305/plutovgTargets-noconfig.cmake")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/plutovg" TYPE FILE FILES
-    "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/plutovg-build/plutovgConfig.cmake"
-    "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/plutovg-build/plutovgConfigVersion.cmake"
+    "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/plutovg-build/plutovgConfig.cmake"
+    "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/plutovg-build/plutovgConfigVersion.cmake"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/plutovg-build/plutovg.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/plutovg-build/plutovg.pc")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/plutovg-build/install_local_manifest.txt"
+  file(WRITE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/plutovg-build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

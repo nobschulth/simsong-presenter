@@ -58,7 +58,7 @@ set_target_properties(plutovg::plutovg PROPERTIES
 set_property(TARGET plutovg::plutovg APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(plutovg::plutovg PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_NOCONFIG "C"
-  IMPORTED_LOCATION_NOCONFIG "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL_ttf/external/plutovg-build/libplutovg.a"
+  IMPORTED_LOCATION_NOCONFIG "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL_ttf/external/plutovg-build/libplutovg.a"
   )
 
 # This file does not depend on other imported targets which have

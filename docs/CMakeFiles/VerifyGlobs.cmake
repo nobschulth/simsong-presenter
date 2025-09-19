@@ -17,7 +17,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -35,7 +35,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -46,7 +46,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -55,7 +55,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -72,7 +72,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -88,7 +88,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -98,7 +98,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -108,7 +108,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -118,7 +118,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -128,7 +128,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -138,7 +138,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -148,7 +148,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -158,7 +158,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -169,7 +169,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -179,7 +179,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -188,7 +188,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -198,7 +198,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -207,7 +207,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -217,7 +217,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -226,7 +226,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -236,7 +236,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -246,7 +246,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -256,7 +256,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -270,7 +270,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -296,7 +296,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -327,7 +327,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -337,7 +337,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -348,7 +348,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -358,7 +358,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -367,7 +367,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -377,7 +377,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -387,7 +387,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -397,7 +397,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -408,7 +408,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -418,7 +418,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -427,7 +427,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -437,7 +437,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -455,7 +455,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -466,7 +466,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -478,7 +478,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -488,7 +488,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -497,7 +497,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -510,7 +510,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -527,7 +527,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -537,7 +537,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -547,7 +547,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -557,7 +557,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -567,7 +567,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -577,7 +577,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -586,7 +586,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -596,7 +596,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -606,7 +606,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -616,7 +616,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -625,7 +625,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -636,7 +636,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -646,7 +646,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -657,7 +657,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -666,7 +666,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -677,7 +677,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -688,7 +688,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -698,7 +698,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -707,7 +707,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -717,7 +717,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -727,7 +727,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -737,7 +737,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -746,7 +746,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -756,7 +756,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -769,7 +769,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -782,7 +782,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -820,7 +820,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -879,7 +879,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -889,7 +889,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -900,7 +900,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -910,7 +910,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -920,7 +920,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -944,7 +944,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -957,7 +957,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -967,7 +967,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -977,7 +977,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -987,7 +987,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -996,7 +996,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1006,7 +1006,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1017,7 +1017,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1032,7 +1032,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1045,7 +1045,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1055,7 +1055,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1065,7 +1065,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1075,7 +1075,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1084,7 +1084,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1094,7 +1094,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1104,7 +1104,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1114,7 +1114,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1123,7 +1123,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1133,7 +1133,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1143,7 +1143,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1174,7 +1174,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1201,7 +1201,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1213,7 +1213,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1225,7 +1225,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1239,7 +1239,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1253,7 +1253,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1268,7 +1268,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1283,7 +1283,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1295,7 +1295,7 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()
 
 # both_sources at lib/SDL/cmake/sdlcommands.cmake:29 (file)
@@ -1313,5 +1313,5 @@ set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/CMakeFiles/cmake.verify_globs")
 endif()

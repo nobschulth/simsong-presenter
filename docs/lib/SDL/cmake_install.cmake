@@ -40,6 +40,6 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/Noah/Documents/Projects/C/simsong-presenter/webbuild/lib/SDL/install_local_manifest.txt"
+  file(WRITE "/home/Noah/Documents/Projects/C/simsong-presenter/docs/lib/SDL/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
