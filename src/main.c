@@ -3,7 +3,6 @@
 #include "SDL3/SDL_mouse.h"
 #include "SDL3_ttf/SDL_ttf.h"
 #include "clay/clay_layout.h"
-#include "em_clipboard.h"
 #include <stdio.h>
 #define SDL_MAIN_USE_CALLBACKS 1
 #include <SDL3/SDL_main.h>
@@ -81,7 +80,7 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
 
     *appstate = newAppstate;
 
-    clipboard_listen_for_paste(Layout_Paste, NULL);
+    //clipboard_listen_for_paste(Layout_Paste, NULL);
     //emscripten_exit_with_live_runtime();
 
     return SDL_APP_CONTINUE;

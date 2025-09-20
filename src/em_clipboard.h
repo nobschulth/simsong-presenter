@@ -12,7 +12,6 @@ void emscripten_browser_clipboard_paste_return(const char *paste_data,
 
 // Register paste event handler in JS, calling back into C
 EM_JS(void, paste_js, (paste_handler callback, void *userdata), {
-  canvas.addEventListener("click", () => {
     navigator.clipboard.readText().then(text => {
       Module.ccall(
         'emscripten_browser_clipboard_paste_return',
@@ -23,7 +22,6 @@ EM_JS(void, paste_js, (paste_handler callback, void *userdata), {
     }).catch(err => {
       console.log("Clipboard read failed:", err);
     });
-  });
 });
 /*
 EM_JS(void, paste_js, (paste_handler callback, void *userdata), {
@@ -51,7 +49,6 @@ void emscripten_browser_clipboard_paste_return(const char *paste_data,
                                                paste_handler callback,
                                                void *userdata) {
   if (callback) {
-    printf(" from here Listen now\n");
     callback(paste_data, userdata);
   }
 }
