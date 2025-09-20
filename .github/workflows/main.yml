@@ -22,21 +22,16 @@ jobs:
         with:
           version: 3.1.45
           actions-cache-folder: emsdk-cache
-        
-      - name: Run SDL_ttf download script
-        run: |
-          cd lib/SDL_ttf/external
-          ./download.sh
 
       - name: Build
         run: |
           mkdir build
-          emcmake cmake -B build -GNinja -DCMAKE_BUILD_TYPE=Release
+          emcmake cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Release
           emmake ninja -C build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: build
+          folder: build/
           
           
