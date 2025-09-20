@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-Song* Song_CreateFromString(char* string) {
+Song* Song_CreateFromString(const char* string) {
     if (!string) return NULL;
     Song* song = safe_malloc(sizeof(Song));
     song->elementCount = 0;

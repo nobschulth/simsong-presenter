@@ -56,6 +56,13 @@ void Layout_Button_Start(Clay_ElementId elementId, Clay_PointerData pointerData,
     }
 }
 
+void Layout_Paste(const char* text, void* userdata) {
+    Song* song = Song_CreateFromString(text);
+    if (!song) { return; }
+    currentSong = song;
+    currentSelected = 0;
+}
+
 void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData)) {
     CLAY_AUTO_ID({
         .backgroundColor = Clay_Hovered() ? COLOR_ACCENT_RED_LIGHT : COLOR_ACCENT_RED,

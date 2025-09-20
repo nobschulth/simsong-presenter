@@ -15,6 +15,6 @@ typedef struct Song {
     size_t elementCount;
 } Song;
 
-Song* Song_CreateFromString(char* string);
+Song* Song_CreateFromString(const char* string);
 
 #endif // !H_SONG
