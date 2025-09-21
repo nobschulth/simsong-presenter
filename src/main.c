@@ -1,6 +1,9 @@
+#include "SDL3/SDL_events.h"
 #include "SDL3/SDL_init.h"
 #include "SDL3/SDL_log.h"
 #include "SDL3/SDL_mouse.h"
+#include "SDL3/SDL_oldnames.h"
+#include "SDL3/SDL_render.h"
 #include "SDL3_ttf/SDL_ttf.h"
 #include "clay/clay_layout.h"
 #include <stdio.h>
@@ -39,12 +42,14 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Could not create window/renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
+    setAppstate(newAppstate);
     
     SDL_SetWindowResizable(newAppstate->sdlWindow, true);
 
     //appstate
     newAppstate->rendererData.renderer = newAppstate->rendererData.renderer;
-    newAppstate->rendererData.textEngine = TTF_CreateRendererTextEngine(newAppstate->rendererData.renderer);
+    //newAppstate->rendererData.textEngine = TTF_CreateRendererTextEngine(newAppstate->rendererData.renderer);
+    newAppstate->rendererData.textEngine = TTF_CreateSurfaceTextEngine();
     if (!newAppstate->rendererData.textEngine) {
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to create text engine from renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
@@ -80,8 +85,7 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
 
     *appstate = newAppstate;
 
-    //clipboard_listen_for_paste(Layout_Paste, NULL);
-    //emscripten_exit_with_live_runtime();
+    SDL_Clay_RenderQueueTextRedraw(1);
 
     return SDL_APP_CONTINUE;
 }
@@ -93,6 +97,7 @@ SDL_AppResult SDL_AppEvent(void* voidstate, SDL_Event* event) {
             return SDL_APP_SUCCESS;
         case SDL_EVENT_WINDOW_RESIZED:
             Clay_SetLayoutDimensions((Clay_Dimensions) { (float) event->window.data1, (float) event->window.data2 });
+            SDL_Clay_RenderQueueTextRedraw(1);
             break;
         case SDL_EVENT_MOUSE_BUTTON_DOWN:
             appstate->pointerDown = event->button.button == SDL_BUTTON_LEFT;
@@ -103,6 +108,13 @@ SDL_AppResult SDL_AppEvent(void* voidstate, SDL_Event* event) {
         case SDL_EVENT_MOUSE_WHEEL:
             appstate->scrollDelta = (Clay_Vector2) { event->wheel.x, event->wheel.y };
             break;
+        case SDL_EVENT_WINDOW_ENTER_FULLSCREEN:
+        case SDL_EVENT_WINDOW_LEAVE_FULLSCREEN:
+        case SDL_EVENT_WINDOW_DISPLAY_SCALE_CHANGED:
+        case SDL_EVENT_WINDOW_RESTORED:
+        case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
+            SDL_Clay_RenderQueueTextRedraw(2);
+            break;
     }
     return SDL_APP_CONTINUE;
 }
@@ -111,7 +123,7 @@ SDL_AppResult SDL_AppIterate(void* voidstate) {
     Appstate* appstate = (Appstate*)voidstate;
     //calculate deltatime
     Uint64 tick = SDL_GetTicks();
-    const double delta = (appstate->previousTick - tick) / 1000.0;
+    const double delta = (tick - appstate->previousTick) / 1000.0;
 
     float pX, pY = 0;
     SDL_GetMouseState(&pX, &pY);

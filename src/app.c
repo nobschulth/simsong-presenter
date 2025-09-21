@@ -2,7 +2,14 @@
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include "app.h"
+#include "SDL3/SDL_video.h"
 #include "utils.h"
+
+Appstate* g_appstate = NULL;
+
+void setAppstate(Appstate* appstate) {
+    g_appstate = appstate;
+}
 
 void appstate_free(Appstate* appstate) {
     SDL_DestroyWindow(appstate->sdlWindow);
@@ -40,4 +47,10 @@ Clay_Dimensions SDL_MeasureText(Clay_StringSlice text, Clay_TextElementConfig *c
 
 void HandleClayErrors(Clay_ErrorData errorData) {
     printf("%s", errorData.errorText.chars);
+}
+
+float getFontScale() {
+    int h = 0;
+    SDL_GetWindowSize(g_appstate->sdlWindow, NULL, &h);
+    return h / 900.0;
 }

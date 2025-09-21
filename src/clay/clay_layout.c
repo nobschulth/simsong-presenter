@@ -11,6 +11,7 @@
 #include "clay_layout.h"
 #include "../utils.h"
 #include "../song.h"
+#include "../app.h"
 #ifdef __EMSCRIPTEN__
 #include "../em_clipboard.h"
 #endif
@@ -51,6 +52,7 @@ void Layout_Initialize(SDL_Renderer* renderer) {
 
 void Layout_Button_Start(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
     if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
+        SDL_Clay_RenderQueueTextRedraw(2);
 #ifdef __EMSCRIPTEN__
         clipboard_listen_for_paste(Layout_Paste, NULL);
 #endif
@@ -63,6 +65,7 @@ void Layout_Button_Start(Clay_ElementId elementId, Clay_PointerData pointerData,
 }
 
 void Layout_Paste(const char* text, void* userdata) {
+    SDL_Clay_RenderQueueTextRedraw(2);
     Song* song = Song_CreateFromString(text);
     if (!song) { return; }
     currentSong = song;
@@ -81,7 +84,7 @@ void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId 
         CLAY_TEXT(text, CLAY_TEXT_CONFIG({ 
             .textColor = COLOR_WHITE,
             .fontId = 1,
-            .fontSize = 28,
+            .fontSize = 28 * getFontScale(),
         }));
     }
 }
@@ -107,7 +110,7 @@ void Layout_Main() {
         CLAY_TEXT(CLAY_STRING("Copy a song from Songselect and press the button to start presenting"), CLAY_TEXT_CONFIG({
             .textColor = COLOR_WHITE,
             .fontId = 1,
-            .fontSize = 20,
+            .fontSize = 20 * getFontScale(),
         }));
         Layout_Component_Button(CLAY_STRING("Paste song from clipboard"), Layout_Button_Start);
     }
@@ -115,6 +118,7 @@ void Layout_Main() {
 
 void Layout_Button_Tabbar(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
     if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
+        SDL_Clay_RenderQueueTextRedraw(1);
         currentSelected = ((LayoutButtonTabbar*)userData)->id;
     }
 }
@@ -144,7 +148,7 @@ void Layout_Componenet_Tabbar() {
                 CLAY_TEXT(((Clay_String){ .chars = currentTitle, .length = strlen(currentTitle), .isStaticallyAllocated = false}), CLAY_TEXT_CONFIG({
                     .textAlignment = CLAY_TEXT_ALIGN_CENTER,
                     .fontId = 1,
-                    .fontSize = 32,
+                    .fontSize = 32 * getFontScale(),
                     .textColor = i == currentSelected ? COLOR_BLACK_BG : COLOR_WHITE,
                 }));
             }
@@ -173,13 +177,7 @@ void Layout_Song1() {
             }
         }) {
             Layout_Componenet_Tabbar();
-            CLAY_AUTO_ID({.layout = { .sizing = { .height = CLAY_SIZING_PERCENT(0.2) } }}) {}
-            /*CLAY_TEXT((Clay_String){ .chars = currentSong->elements[currentSelected].text, .isStaticallyAllocated = false, .length = strlen(currentSong->elements[currentSelected].text) }, CLAY_TEXT_CONFIG({
-                .textColor = COLOR_WHITE,
-                .fontId = 1,
-                .fontSize = 60,
-                .textAlignment = CLAY_TEXT_ALIGN_CENTER,
-            })); */
+            CLAY_AUTO_ID({.layout = { .sizing = { .height = CLAY_SIZING_PERCENT(0.1) } }}) {}
             CLAY_AUTO_ID({
                 .layout = {
                     .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER },
@@ -189,12 +187,12 @@ void Layout_Song1() {
             CLAY_TEXT(((Clay_String){ .chars = currentText, .length = strlen(currentText), .isStaticallyAllocated = false }), CLAY_TEXT_CONFIG({
                 .textColor = COLOR_WHITE,
                 .fontId = 1,
-                .fontSize = 60,
+                .fontSize = 60 * getFontScale(),
                 .textAlignment = CLAY_TEXT_ALIGN_CENTER,
             }));
             }
             //Credits
-            CLAY_TEXT((Clay_String){ .chars = "123" }, CLAY_TEXT_CONFIG({ .fontId = 2 }));
+            //CLAY_TEXT((Clay_String){ .chars = "123" }, CLAY_TEXT_CONFIG({ .fontId = 2 }));
             CLAY_AUTO_ID({
                 .layout = {
                     .childAlignment = { .x = CLAY_ALIGN_X_LEFT, .y = CLAY_ALIGN_Y_BOTTOM },
@@ -205,7 +203,7 @@ void Layout_Song1() {
                 CLAY_TEXT(stringCredits, CLAY_TEXT_CONFIG({
                     .textColor = COLOR_WHITE,
                     .fontId = 1,
-                    .fontSize = 10,
+                    .fontSize = 10 * getFontScale(),
                     .textAlignment = CLAY_TEXT_ALIGN_LEFT,
                 }));
             }
@@ -236,7 +234,7 @@ void Layout_Song1() {
             }) {
                 CLAY_TEXT(stringTitle, CLAY_TEXT_CONFIG({
                     .fontId = 2,
-                    .fontSize = 56,
+                    .fontSize = 56 * getFontScale(),
                     .textColor = COLOR_WHITE,
                     .textAlignment = CLAY_TEXT_ALIGN_CENTER,
                 }));

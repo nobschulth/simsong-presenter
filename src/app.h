@@ -13,11 +13,17 @@ typedef struct Appstate {
     Clay_Vector2 scrollDelta;
 } Appstate;
 
+//sets the global variable appsate (used for font scaling)
+void setAppstate(Appstate* appstate);
+
 void appstate_free(Appstate* appstate);
 //quite useless but I leave it here
 bool appstate_load_font(Appstate* appstate, char* path);
 
 Clay_Dimensions SDL_MeasureText(Clay_StringSlice text, Clay_TextElementConfig *config, void *userData);
 void HandleClayErrors(Clay_ErrorData errorData);
+
+//returns a scale to scale fonts based on screen height
+float getFontScale();
 
 #endif

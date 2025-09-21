@@ -2,12 +2,21 @@
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
+#include <stdlib.h>
+#include "SDL3/SDL_render.h"
+#include "SDL3/SDL_stdinc.h"
+#include "SDL3/SDL_surface.h"
 #include "clay.h"
 #include "clay_renderer.h"
 
 /* Global for convenience. Even in 4K this is enough for smooth curves (low radius or rect size coupled with
  * no AA or low resolution might make it appear as jagged curves) */
 static int NUM_CIRCLE_SEGMENTS = 16;
+
+SDL_Rect currentClippingRectangle;
+//stores the amount of frames that text should be redrawn
+uint8_t g_textRedrawQueued;
+SDL_Clay_RenderTextCache g_textCache;
 
 //all rendering is performed by a single SDL call, avoiding multiple RenderRect + plumbing choice for circles.
 static void SDL_Clay_RenderFillRoundedRect(Clay_SDL3RendererData *rendererData, const SDL_FRect rect, const float cornerRadius, const Clay_Color _color) {
@@ -136,8 +145,6 @@ static void SDL_Clay_RenderArc(Clay_SDL3RendererData *rendererData, const SDL_FP
     }
 }
 
-SDL_Rect currentClippingRectangle;
-
 void SDL_Clay_RenderClayCommands(Clay_SDL3RendererData *rendererData, Clay_RenderCommandArray *rcommands)
 {
     for (size_t i = 0; i < rcommands->length; i++) {
@@ -157,13 +164,41 @@ void SDL_Clay_RenderClayCommands(Clay_SDL3RendererData *rendererData, Clay_Rende
                 }
             } break;
             case CLAY_RENDER_COMMAND_TYPE_TEXT: {
-                Clay_TextRenderData *config = &rcmd->renderData.text;
-                TTF_Font *font = rendererData->fonts[config->fontId];
-                TTF_SetFontSize(font, config->fontSize);
-                TTF_Text *text = TTF_CreateText(rendererData->textEngine, font, config->stringContents.chars, config->stringContents.length);
-                TTF_SetTextColor(text, config->textColor.r, config->textColor.g, config->textColor.b, config->textColor.a);
-                TTF_DrawRendererText(text, rect.x, rect.y);
-                TTF_DestroyText(text);
+                SDL_Clay_RenderTextCacheEntry* entry = SDL_Clay_RenderTextCacheGetEntry(rcmd->id);
+                if (g_textRedrawQueued > 0) {
+                    Clay_TextRenderData *config = &rcmd->renderData.text;
+                    TTF_Font *font = rendererData->fonts[config->fontId];
+                    TTF_SetFontSize(font, config->fontSize);
+                    TTF_Text *text = TTF_CreateText(rendererData->textEngine, font, config->stringContents.chars, config->stringContents.length);
+                    TTF_SetTextColor(text, config->textColor.r, config->textColor.g, config->textColor.b, config->textColor.a);
+
+                    if (entry->texture) {
+                        SDL_DestroyTexture(entry->texture);
+                        entry->texture = NULL;
+                    }
+                    //create a surface
+                    int textW, textH = 0;
+                    TTF_GetTextSize(text, &textW, &textH);
+                    SDL_Surface* textSurface = SDL_CreateSurface(textW, textH, SDL_PIXELFORMAT_RGBA32);
+                    TTF_DrawSurfaceText(text, 0, 0, textSurface);
+                    
+                    //save as texture
+                    entry->texture = SDL_CreateTextureFromSurface(rendererData->renderer, textSurface);
+                    entry->w = textW;
+                    entry->h = textH;
+                    SDL_DestroySurface(textSurface);
+                    TTF_DestroyText(text);
+                }
+                if (entry->texture) {
+                    SDL_FRect drawRect = {
+                        .x = rect.x,
+                        .y = rect.y,
+                        .w = entry->w,
+                        .h = entry->h
+                    };
+                        //printf("Dims: %d x %d\n", entry->texture->w, entry->texture->h);
+                    SDL_RenderTexture(rendererData->renderer, entry->texture, NULL, &rect);
+                }
             } break;
             case CLAY_RENDER_COMMAND_TYPE_BORDER: {
                 Clay_BorderRenderData *config = &rcmd->renderData.border;
@@ -256,4 +291,43 @@ void SDL_Clay_RenderClayCommands(Clay_SDL3RendererData *rendererData, Clay_Rende
                 SDL_Log("Unknown render command type: %d", rcmd->commandType);
         }
     }
+    if (g_textRedrawQueued > 0)
+        g_textRedrawQueued--;
 }
+
+void SDL_Clay_RenderQueueTextRedraw(uint8_t frames) {
+    g_textRedrawQueued = SDL_max(g_textRedrawQueued, frames);
+}
+
+SDL_Clay_RenderTextCacheEntry* SDL_Clay_RenderTextCacheGetEntry(uint32_t id) {
+    //search
+    for (int i = 0; i < g_textCache.count; i++) {
+        if (g_textCache.entries[i].id == id) {
+            return &g_textCache.entries[i];
+        }
+    }
+
+    //create
+    g_textCache.count++;
+    if (g_textCache.count == 1) {
+        g_textCache.entries = malloc(sizeof(SDL_Clay_RenderTextCacheEntry));
+    } else {
+        g_textCache.entries = realloc(g_textCache.entries, sizeof(SDL_Clay_RenderTextCacheEntry) * g_textCache.count);
+    }
+
+    if (!g_textCache.entries) {
+        fprintf(stderr, "Fatal: malloc/realloc failed, terminating\n");
+        exit(1);
+    }
+
+    SDL_Clay_RenderTextCacheEntry* entry = &g_textCache.entries[g_textCache.count - 1];
+    entry->id = id;
+    entry->h = 0;
+    entry->w = 0;
+    entry->texture = NULL;
+    return entry;
+
+
+
+}
+
