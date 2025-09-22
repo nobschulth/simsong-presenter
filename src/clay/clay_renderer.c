@@ -3,6 +3,7 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
 #include <stdlib.h>
+#include "SDL3/SDL_blendmode.h"
 #include "SDL3/SDL_render.h"
 #include "SDL3/SDL_stdinc.h"
 #include "SDL3/SDL_surface.h"
@@ -186,6 +187,8 @@ void SDL_Clay_RenderClayCommands(Clay_SDL3RendererData *rendererData, Clay_Rende
                     entry->texture = SDL_CreateTextureFromSurface(rendererData->renderer, textSurface);
                     entry->w = textW;
                     entry->h = textH;
+                    SDL_SetTextureScaleMode(entry->texture, SDL_SCALEMODE_NEAREST);
+                    SDL_SetTextureBlendMode(entry->texture, SDL_BLENDMODE_BLEND_PREMULTIPLIED);
                     SDL_DestroySurface(textSurface);
                     TTF_DestroyText(text);
                 }

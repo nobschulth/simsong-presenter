@@ -117,7 +117,7 @@ void Layout_Main() {
 }
 
 void Layout_Button_Tabbar(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
-    if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
+    if (pointerData.state == CLAY_POINTER_DATA_RELEASED_THIS_FRAME) {
         SDL_Clay_RenderQueueTextRedraw(1);
         currentSelected = ((LayoutButtonTabbar*)userData)->id;
     }

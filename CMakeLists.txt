@@ -56,6 +56,9 @@ add_custom_command(
 if(EMSCRIPTEN)
     set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "index")
     set_target_properties(${PROJECT_NAME} PROPERTIES
-        LINK_FLAGS "--preload-file ${CMAKE_SOURCE_DIR}/resources@/resources -s EXPORTED_RUNTIME_METHODS='[\"requestFullscreen\", \"ccall\", \"cwrap\"]' -sALLOW_MEMORY_GROWTH"
+        LINK_FLAGS "--preload-file ${CMAKE_SOURCE_DIR}/resources@/resources \
+        -s EXPORTED_RUNTIME_METHODS='[\"requestFullscreen\", \"ccall\", \"cwrap\"]' \
+        -sALLOW_MEMORY_GROWTH \
+        --shell-file ../other/index.html"
     )
 endif()
