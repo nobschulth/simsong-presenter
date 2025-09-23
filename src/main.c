@@ -17,8 +17,8 @@
 #include "utils.h"
 #include "clay/clay_layout.h"
 
-const int WINDOW_W = 800;
-const int WINDOW_H = 450;
+const int WINDOW_W = 1600;
+const int WINDOW_H = 900;
 
 //Ititialize SDL and Clay
 SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
