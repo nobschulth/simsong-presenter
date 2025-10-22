@@ -13,7 +13,7 @@
 #include "../song.h"
 #include "../app.h"
 #ifdef __EMSCRIPTEN__
-#include "../em_clipboard.h"
+#include "../em/em_clipboard.h"
 #endif
 
 const Clay_Color COLOR_BLACK = { 0, 0, 0, 255 };

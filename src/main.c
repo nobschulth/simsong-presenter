@@ -1,9 +1,5 @@
 #include "SDL3/SDL_events.h"
 #include "SDL3/SDL_init.h"
-#include "SDL3/SDL_log.h"
-#include "SDL3/SDL_mouse.h"
-#include "SDL3/SDL_oldnames.h"
-#include "SDL3/SDL_render.h"
 #include "SDL3_ttf/SDL_ttf.h"
 #include "clay/clay_layout.h"
 #include <stdio.h>
@@ -16,9 +12,20 @@
 #include "app.h"
 #include "utils.h"
 #include "clay/clay_layout.h"
+#ifdef __EMSCRIPTEN__
+#include "em/em_resize.h"
+#endif
 
-const int WINDOW_W = 1600;
-const int WINDOW_H = 900;
+const int WINDOW_W = 800;
+const int WINDOW_H = 450;
+
+void onCanvasResize(int pixelW, int pixelH, int cssW, int cssH, void* state) {
+    Appstate* appstate = (Appstate*)state;
+    SDL_SetWindowSize(appstate->sdlWindow, pixelW, pixelH);
+    SDL_SetRenderScale(appstate->rendererData.renderer,
+        (float)pixelW / (float)cssW,
+        (float)pixelH / (float)cssH);
+}
 
 //Ititialize SDL and Clay
 SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
@@ -76,6 +83,9 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
     //laod images
     Layout_Initialize(newAppstate->rendererData.renderer);
 
+#ifdef __EMSCRIPTEN__
+    resize_js(onCanvasResize, newAppstate);
+#endif
 
 // --- Clay ---
     uint64_t clayMinMemory = Clay_MinMemorySize();

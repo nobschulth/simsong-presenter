@@ -1,4 +1,5 @@
-#pragma once
+#ifndef H_EM_CLIPBOARD
+#define H_EM_CLIPBOARD
 #include <emscripten.h>
 #include <stdio.h>
 
@@ -52,4 +53,4 @@ void emscripten_browser_clipboard_paste_return(const char *paste_data,
     callback(paste_data, userdata);
   }
 }
-
+#endif
