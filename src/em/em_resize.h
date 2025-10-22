@@ -1,19 +1,28 @@
 #ifndef H_EM_RESIZE
 #define H_EM_RESIZE
 #include <emscripten.h>
-#include <stdio.h>
+#include "../app.h"
 
-typedef void (*resize_handler)(int pixelW, int pixelH, int w, int h, void* state);
 
 EMSCRIPTEN_KEEPALIVE
-void emscripten_resize_return(resize_handler handler, int pixelW, int pixelH, int w, int h, void* state);
+void emscripten_resize_return(int pixelW, int pixelH, void* state);
 
 
-EM_JS(void, resize_js, (resize_handler handler, void* state), {
+EM_JS(void, resize_js, (void* state), {
+function isFullscreen() {
+    return !!(
+        document.fullscreenElement ||       // standard
+        document.webkitFullscreenElement || // Chrome, Safari, Opera
+        document.mozFullScreenElement ||    // Firefox
+        document.msFullscreenElement        // IE/Edge
+    );
+}
 function resizeCanvas() {
     const pixelRatio = window.devicePixelRatio || 1;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const fs = isFullscreen();
+    const scale = fs ? 1 : 1/1.5;
+    const width = window.innerWidth * scale;
+    const height = window.innerHeight * scale;
     const canvas = Module.canvas;
 
     // Set the actual pixel size
@@ -28,8 +37,8 @@ function resizeCanvas() {
     Module.ccall(
         'emscripten_resize_return',
         'void',
-        ['number', 'number', 'number', 'number', 'number', 'number'],
-        [handler, canvas.width, canvas.height, width, height, state]
+        ['number', 'number', 'number'],
+        [canvas.width, canvas.height, state]
             );
 }
 
@@ -39,9 +48,8 @@ document.addEventListener('fullscreenchange', resizeCanvas);
 resizeCanvas();
 });
 
-void emscripten_resize_return(resize_handler handler, int pixelW, int pixelH, int w, int h, void* state) {
-    if (handler) {
-        handler(pixelW, pixelH, w, h, state);
-    }
+void emscripten_resize_return(int pixelW, int pixelH, void* state) {
+    Appstate* appstate = (Appstate*)state;
+    SDL_SetWindowSize(appstate->sdlWindow, pixelW, pixelH);
 }
 #endif

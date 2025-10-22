@@ -3,7 +3,6 @@
 #include "SDL3/SDL_render.h"
 #include "SDL3_ttf/SDL_ttf.h"
 #include "clay/clay_layout.h"
-#include <stdio.h>
 #define SDL_MAIN_USE_CALLBACKS 1
 #include <SDL3/SDL_main.h>
 #include <SDL3/SDL.h>
@@ -20,14 +19,6 @@
 const int WINDOW_W = 800;
 const int WINDOW_H = 450;
 
-void onCanvasResize(int pixelW, int pixelH, int cssW, int cssH, void* state) {
-    Appstate* appstate = (Appstate*)state;
-    SDL_SetWindowSize(appstate->sdlWindow, pixelW, pixelH);
-    SDL_SetRenderScale(appstate->rendererData.renderer,
-        (float)pixelW / (float)cssW,
-        (float)pixelH / (float)cssH);
-    SDL_SetRenderScale(appstate->rendererData.renderer, 1.0f, 1.0f);
-}
 
 //Ititialize SDL and Clay
 SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
@@ -86,7 +77,7 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
     Layout_Initialize(newAppstate->rendererData.renderer);
 
 #ifdef __EMSCRIPTEN__
-    resize_js(onCanvasResize, newAppstate);
+    resize_js(newAppstate);
 #endif
 
 // --- Clay ---
