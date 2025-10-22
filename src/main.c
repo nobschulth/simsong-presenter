@@ -1,5 +1,6 @@
 #include "SDL3/SDL_events.h"
 #include "SDL3/SDL_init.h"
+#include "SDL3/SDL_render.h"
 #include "SDL3_ttf/SDL_ttf.h"
 #include "clay/clay_layout.h"
 #include <stdio.h>
@@ -25,6 +26,7 @@ void onCanvasResize(int pixelW, int pixelH, int cssW, int cssH, void* state) {
     SDL_SetRenderScale(appstate->rendererData.renderer,
         (float)pixelW / (float)cssW,
         (float)pixelH / (float)cssH);
+    SDL_SetRenderScale(appstate->rendererData.renderer, 1.0f, 1.0f);
 }
 
 //Ititialize SDL and Clay
