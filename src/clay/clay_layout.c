@@ -12,6 +12,7 @@
 #include "../utils.h"
 #include "../song.h"
 #include "../app.h"
+#include "clay_renderer.h"
 #ifdef __EMSCRIPTEN__
 #include "../em/em_clipboard.h"
 #endif
@@ -36,7 +37,7 @@ const Clay_ElementDeclaration elementBg = {
 
 SDL_Texture** images = NULL;
 Song* currentSong = NULL;
-size_t currentSelected = 0;
+size_t currentSelected = -1;
 
 void Layout_Initialize(SDL_Renderer* renderer) {
     const int imageCount = 1;
@@ -50,8 +51,18 @@ void Layout_Initialize(SDL_Renderer* renderer) {
     }
 }
 
+void Layout_Button_Back(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
+    if (pointerData.state == CLAY_POINTER_DATA_RELEASED_THIS_FRAME) {
+        currentSelected = -1;
+        Song_free(currentSong);
+        currentSong = NULL;
+        SDL_Clay_RenderQueueTextRedraw(1);
+    }
+
+}
+
 void Layout_Button_Start(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
-    if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
+    if (pointerData.state == CLAY_POINTER_DATA_RELEASED_THIS_FRAME) {
         SDL_Clay_RenderQueueTextRedraw(2);
 #ifdef __EMSCRIPTEN__
         clipboard_listen_for_paste(Layout_Paste, NULL);
@@ -80,7 +91,8 @@ void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId 
             .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER },
         },
     }) {
-        Clay_OnHover(hoverFunc, (intptr_t)NULL);
+        if (hoverFunc)
+            Clay_OnHover(hoverFunc, (intptr_t)NULL);
         CLAY_TEXT(text, CLAY_TEXT_CONFIG({ 
             .textColor = COLOR_WHITE,
             .fontId = 1,
@@ -239,6 +251,15 @@ void Layout_Song1() {
                     .textAlignment = CLAY_TEXT_ALIGN_CENTER,
                 }));
             }
+        }
+        CLAY_AUTO_ID({
+            .layout = {
+                .sizing = { .height = CLAY_SIZING_GROW(1), .width = CLAY_SIZING_PERCENT(0) },
+                .childAlignment = { .x = CLAY_ALIGN_X_RIGHT, .y = CLAY_ALIGN_Y_BOTTOM },
+            }
+
+        }) {
+            Layout_Component_Button(CLAY_STRING("Back"), Layout_Button_Back);
         }
     }
 }

@@ -1,8 +1,9 @@
-#include "song.h"
-#include "utils.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include "song.h"
+#include "utils.h"
 
 Song* Song_CreateFromString(const char* string) {
     if (!string) return NULL;
@@ -57,4 +58,15 @@ Song* Song_CreateFromString(const char* string) {
     printf("Credits: \"%s\"\n", song->licence);
 
     return song;
+}
+
+Song* Song_free(Song* song) {
+    for (int i = 0; i < song->elementCount; i++) {
+        free(song->elements[i].text);
+        free(song->elements[i].name);
+    }
+    free(song->elements);
+    free(song->licence);
+    free(song->title);
+    free(song);
 }

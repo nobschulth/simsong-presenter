@@ -16,5 +16,6 @@ typedef struct Song {
 } Song;
 
 Song* Song_CreateFromString(const char* string);
+Song* Song_free(Song* song);
 
 #endif // !H_SONG
