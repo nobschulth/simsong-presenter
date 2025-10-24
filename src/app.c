@@ -14,6 +14,10 @@ void setAppstate(Appstate* appstate) {
 void appstate_free(Appstate* appstate) {
     SDL_DestroyWindow(appstate->sdlWindow);
     SDL_DestroyRenderer(appstate->rendererData.renderer);
+    TTF_DestroySurfaceTextEngine(appstate->rendererData.textEngine);
+    for (int i = 0; i < appstate->rendererData.fontLength; i++) {
+        TTF_CloseFont(appstate->rendererData.fonts[i]);
+    }
 }
 
 bool appstate_load_font(Appstate* appstate, char* path) {

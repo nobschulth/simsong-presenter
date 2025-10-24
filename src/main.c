@@ -149,4 +149,8 @@ SDL_AppResult SDL_AppIterate(void* voidstate) {
 
 void SDL_AppQuit(void* voidstate, SDL_AppResult result) {
     //sdl does the window and renderer cleanup, so no need to free them
+    Appstate* appstate = (Appstate*)voidstate;
+    appstate_free(appstate);
+
+
 }

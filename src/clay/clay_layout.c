@@ -4,8 +4,8 @@
 #include <SDL3/SDL.h>
 #include <stdlib.h>
 #include <string.h>
-#include "SDL3/SDL_clipboard.h"
-#include "SDL3/SDL_log.h"
+#include <SDL3/SDL.h>
+#include "SDL3/SDL_stdinc.h"
 #include "SDL3_image/SDL_image.h"
 #include "clay.h"
 #include "clay_layout.h"
@@ -36,8 +36,11 @@ const Clay_ElementDeclaration elementBg = {
 };
 
 SDL_Texture** images = NULL;
+size_t imageSize = 1;
 Song* currentSong = NULL;
 size_t currentSelected = -1;
+int* currentButtonIdData = NULL;
+
 
 void Layout_Initialize(SDL_Renderer* renderer) {
     const int imageCount = 1;
@@ -48,6 +51,16 @@ void Layout_Initialize(SDL_Renderer* renderer) {
             SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to load image!");
             exit(1);
         }
+    }
+}
+
+void Layout_Quit() {
+    for (int i = 0; i < imageSize; i++) {
+        SDL_DestroyTexture(images[i]);
+    }
+    if (currentButtonIdData) {
+        free(currentButtonIdData);
+        currentButtonIdData = NULL;
     }
 }
 
@@ -69,6 +82,7 @@ void Layout_Button_Start(Clay_ElementId elementId, Clay_PointerData pointerData,
 #endif
         char* clipboardText = SDL_GetClipboardText();
         Song* song = Song_CreateFromString(clipboardText);
+        SDL_free(clipboardText);
         if (!song) { return; }
         currentSong = song;
         currentSelected = 0;
@@ -131,7 +145,7 @@ void Layout_Main() {
 void Layout_Button_Tabbar(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
     if (pointerData.state == CLAY_POINTER_DATA_RELEASED_THIS_FRAME) {
         SDL_Clay_RenderQueueTextRedraw(1);
-        currentSelected = ((LayoutButtonTabbar*)userData)->id;
+        currentSelected = *(int*)userData;
     }
 }
 
@@ -144,10 +158,12 @@ void Layout_Componenet_Tabbar() {
         },
         .clip = { .horizontal = true, .childOffset = Clay_GetScrollOffset() }
     }) {
+        if (!currentButtonIdData) {
+            currentButtonIdData = safe_malloc(sizeof(int) * currentSong->elementCount);
+        }
         //render the clickable items
         for (int i = 0; i < currentSong->elementCount; i++) {
-            LayoutButtonTabbar* btnData = safe_malloc(sizeof(LayoutButtonTabbar));
-            btnData->id = i;
+            currentButtonIdData[i] = i;
             char* currentTitle = currentSong->elements[i].name;
             CLAY(CLAY_IDI("TabbarItem", i), {
                 .backgroundColor = i == currentSelected ? COLOR_WHITE : COLOR_BLACK_BG,
@@ -156,7 +172,7 @@ void Layout_Componenet_Tabbar() {
                     .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER }
                 },
             }) {
-                Clay_OnHover(Layout_Button_Tabbar, (intptr_t)btnData);
+                Clay_OnHover(Layout_Button_Tabbar, (intptr_t)(currentButtonIdData + i));
                 CLAY_TEXT(((Clay_String){ .chars = currentTitle, .length = strlen(currentTitle), .isStaticallyAllocated = false}), CLAY_TEXT_CONFIG({
                     .textAlignment = CLAY_TEXT_ALIGN_CENTER,
                     .fontId = 1,
