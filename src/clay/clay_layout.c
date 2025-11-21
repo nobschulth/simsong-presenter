@@ -110,7 +110,7 @@ void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId 
         CLAY_TEXT(text, CLAY_TEXT_CONFIG({ 
             .textColor = COLOR_WHITE,
             .fontId = 1,
-            .fontSize = 28 * getFontScale(),
+            .fontSize = 42 * getFontScale(),
         }));
     }
 }
@@ -136,7 +136,7 @@ void Layout_Main() {
         CLAY_TEXT(CLAY_STRING("Copy a song from Songselect and press the button to start presenting"), CLAY_TEXT_CONFIG({
             .textColor = COLOR_WHITE,
             .fontId = 1,
-            .fontSize = 20 * getFontScale(),
+            .fontSize = 28 * getFontScale(),
         }));
         Layout_Component_Button(CLAY_STRING("Paste song from clipboard"), Layout_Button_Start);
     }
@@ -176,7 +176,7 @@ void Layout_Componenet_Tabbar() {
                 CLAY_TEXT(((Clay_String){ .chars = currentTitle, .length = strlen(currentTitle), .isStaticallyAllocated = false}), CLAY_TEXT_CONFIG({
                     .textAlignment = CLAY_TEXT_ALIGN_CENTER,
                     .fontId = 1,
-                    .fontSize = 32 * getFontScale(),
+                    .fontSize = 49 * getFontScale(),
                     .textColor = i == currentSelected ? COLOR_BLACK_BG : COLOR_WHITE,
                 }));
             }
