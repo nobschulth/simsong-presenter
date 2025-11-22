@@ -35,19 +35,22 @@ const Clay_ElementDeclaration elementBg = {
     }
 };
 
-SDL_Texture** images = NULL;
-size_t imageSize = 1;
-Song* currentSong = NULL;
-size_t currentSelected = -1;
-int* currentButtonIdData = NULL;
+SDL_Texture** g_images = NULL;
+size_t g_imageSize = 1;
+Song* g_currentSong = NULL;
+size_t g_currentSongElementSelected = -1;
+int* g_tabButtonIdData = NULL;
+Book* g_currentBook = NULL;
+int* g_bookButtonIdData = NULL;
+
 
 
 void Layout_Initialize(SDL_Renderer* renderer) {
     const int imageCount = 1;
-    images = safe_malloc(sizeof(SDL_Texture*) * imageCount);
-    images[0] = IMG_LoadTexture(renderer, "resources/Images/Portrait/p1.png"); //Road with mountain
+    g_images = safe_malloc(sizeof(SDL_Texture*) * imageCount);
+    g_images[0] = IMG_LoadTexture(renderer, "resources/Images/Portrait/p1.png"); //Road with mountain
     for (int i = 0; i < imageCount; i++) {
-        if (!images[i]) {
+        if (!g_images[i]) {
             SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to load image!");
             exit(1);
         }
@@ -55,49 +58,68 @@ void Layout_Initialize(SDL_Renderer* renderer) {
 }
 
 void Layout_Quit() {
-    for (int i = 0; i < imageSize; i++) {
-        SDL_DestroyTexture(images[i]);
+    for (int i = 0; i < g_imageSize; i++) {
+        SDL_DestroyTexture(g_images[i]);
     }
-    if (currentButtonIdData) {
-        free(currentButtonIdData);
-        currentButtonIdData = NULL;
+    if (g_tabButtonIdData) {
+        free(g_tabButtonIdData);
+        g_tabButtonIdData = NULL;
     }
 }
 
 void Layout_Button_Back(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
     if (pointerData.state == CLAY_POINTER_DATA_RELEASED_THIS_FRAME) {
-        currentSelected = -1;
-        Song_free(currentSong);
-        currentSong = NULL;
+        g_currentSongElementSelected = -1;
+        if (!g_currentBook)
+            Song_free(g_currentSong);
+        g_currentSong = NULL;
         SDL_Clay_RenderQueueTextRedraw(1);
     }
 
 }
 
-void Layout_Button_Start(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
-    if (pointerData.state == CLAY_POINTER_DATA_RELEASED_THIS_FRAME) {
+void Layout_Button_StartSong(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
+    if (pointerData.state == CLAY_POINTER_DATA_PRESSED_THIS_FRAME) {
         SDL_Clay_RenderQueueTextRedraw(2);
 #ifdef __EMSCRIPTEN__
-        clipboard_listen_for_paste(Layout_Paste, NULL);
+        clipboard_listen_for_paste(Layout_PasteSong, NULL);
 #endif
         char* clipboardText = SDL_GetClipboardText();
         Song* song = Song_CreateFromString(clipboardText);
         SDL_free(clipboardText);
         if (!song) { return; }
-        currentSong = song;
-        currentSelected = 0;
+        g_currentSong = song;
+        g_currentSongElementSelected = 0;
     }
 }
 
-void Layout_Paste(const char* text, void* userdata) {
+void Layout_PasteSong(const char* text, void* userdata) {
     SDL_Clay_RenderQueueTextRedraw(2);
     Song* song = Song_CreateFromString(text);
     if (!song) { return; }
-    currentSong = song;
-    currentSelected = 0;
+    g_currentSong = song;
+    g_currentSongElementSelected = 0;
 }
 
-void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData)) {
+void Layout_Button_StartBook(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
+    if (pointerData.state == CLAY_POINTER_DATA_RELEASED_THIS_FRAME) {
+        SDL_Clay_RenderQueueTextRedraw(2);
+#ifdef __EMSCRIPTEN__
+        clipboard_listen_for_paste(Layout_PasteBook, NULL);
+#endif
+        char* clipboardText = SDL_GetClipboardText();
+        Book* book = Book_CreateFromString(clipboardText);
+        SDL_free(clipboardText);
+        if (!book) { return; }
+        g_currentBook = book;
+    }
+}
+
+void Layout_PasteBook(const char* text, void* userdata) {
+
+}
+
+void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData), void* userData) {
     CLAY_AUTO_ID({
         .backgroundColor = Clay_Hovered() ? COLOR_ACCENT_RED_LIGHT : COLOR_ACCENT_RED,
         .layout = { 
@@ -106,7 +128,7 @@ void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId 
         },
     }) {
         if (hoverFunc)
-            Clay_OnHover(hoverFunc, (intptr_t)NULL);
+            Clay_OnHover(hoverFunc, userData != NULL ? ((intptr_t)userData) : (intptr_t)NULL);
         CLAY_TEXT(text, CLAY_TEXT_CONFIG({ 
             .textColor = COLOR_WHITE,
             .fontId = 1,
@@ -116,8 +138,10 @@ void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId 
 }
 
 void Layout_Render() {
-    if (currentSong) {
+    if (g_currentSong) {
         Layout_Song1();
+    } else if (g_currentBook != NULL) {
+        Layout_BookSongSelect();
     } else {
         Layout_Main();
     }
@@ -138,14 +162,22 @@ void Layout_Main() {
             .fontId = 1,
             .fontSize = 28 * getFontScale(),
         }));
-        Layout_Component_Button(CLAY_STRING("Paste song from clipboard"), Layout_Button_Start);
+        Layout_Component_Button(CLAY_STRING("Paste song from clipboard"), Layout_Button_StartSong, NULL);
+        Layout_Component_Button(CLAY_STRING("Paste book from clipboard"), Layout_Button_StartBook, NULL);
     }
+}
+
+void Layout_Button_BookSongSelect(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
+    if (pointerData.state != CLAY_POINTER_DATA_RELEASED_THIS_FRAME) return;
+    SDL_Clay_RenderQueueTextRedraw(2);
+    g_currentSong = g_currentBook->songs[*(int*)userData];
+    g_currentSongElementSelected = 0;
 }
 
 void Layout_Button_Tabbar(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
     if (pointerData.state == CLAY_POINTER_DATA_RELEASED_THIS_FRAME) {
         SDL_Clay_RenderQueueTextRedraw(1);
-        currentSelected = *(int*)userData;
+        g_currentSongElementSelected = *(int*)userData;
     }
 }
 
@@ -158,36 +190,60 @@ void Layout_Componenet_Tabbar() {
         },
         .clip = { .horizontal = true, .childOffset = Clay_GetScrollOffset() }
     }) {
-        if (!currentButtonIdData) {
-            currentButtonIdData = safe_malloc(sizeof(int) * currentSong->elementCount);
+        if (!g_tabButtonIdData) {
+            g_tabButtonIdData = safe_malloc(sizeof(int) * g_currentSong->elementCount);
         }
         //render the clickable items
-        for (int i = 0; i < currentSong->elementCount; i++) {
-            currentButtonIdData[i] = i;
-            char* currentTitle = currentSong->elements[i].name;
+        for (int i = 0; i < g_currentSong->elementCount; i++) {
+            g_tabButtonIdData[i] = i;
+            char* currentTitle = g_currentSong->elements[i].name;
             CLAY(CLAY_IDI("TabbarItem", i), {
-                .backgroundColor = i == currentSelected ? COLOR_WHITE : COLOR_BLACK_BG,
+                .backgroundColor = i == g_currentSongElementSelected ? COLOR_WHITE : COLOR_BLACK_BG,
                 .layout = {
                     .padding = CLAY_PADDING_ALL(5),
                     .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER }
                 },
             }) {
-                Clay_OnHover(Layout_Button_Tabbar, (intptr_t)(currentButtonIdData + i));
+                Clay_OnHover(Layout_Button_Tabbar, (intptr_t)(g_tabButtonIdData + i));
                 CLAY_TEXT(((Clay_String){ .chars = currentTitle, .length = strlen(currentTitle), .isStaticallyAllocated = false}), CLAY_TEXT_CONFIG({
                     .textAlignment = CLAY_TEXT_ALIGN_CENTER,
                     .fontId = 1,
                     .fontSize = 49 * getFontScale(),
-                    .textColor = i == currentSelected ? COLOR_BLACK_BG : COLOR_WHITE,
+                    .textColor = i == g_currentSongElementSelected ? COLOR_BLACK_BG : COLOR_WHITE,
                 }));
             }
         }
     }
 }
 
+void Layout_BookSongSelect() {
+    if (!g_bookButtonIdData) {
+        g_bookButtonIdData = safe_malloc(sizeof(int) * g_currentBook->songCount);
+    }
+    CLAY(CLAY_ID("SongSelect"), {
+        .backgroundColor = COLOR_BLACK_BG,
+        .layout = {
+            .layoutDirection = CLAY_TOP_TO_BOTTOM,
+            .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER },
+            .sizing = { .height = CLAY_SIZING_GROW(), .width = CLAY_SIZING_GROW() },
+            .padding = CLAY_PADDING_ALL(30),
+            .childGap = 20,
+        },
+        .clip = { .vertical = true, .childOffset = Clay_GetScrollOffset() },
+    }) {
+        for (int i = 0; i < g_currentBook->songCount; i++) {
+            g_bookButtonIdData[i] = i;
+            Clay_String stringButton = { .chars = g_currentBook->songs[i]->title, .isStaticallyAllocated = false, .length = strlen(g_currentBook->songs[i]->title) };
+            Layout_Component_Button(stringButton, Layout_Button_BookSongSelect, (g_bookButtonIdData + i));
+        }
+
+    }
+}
+
 void Layout_Song1() {
-    Clay_String stringCredits = { .chars = currentSong->licence, .isStaticallyAllocated = false, .length = strlen(currentSong->licence) };
-    Clay_String stringTitle = { .chars = currentSong->title, .isStaticallyAllocated = false, .length = strlen(currentSong->title) };
-    char* currentText = currentSong->elements[currentSelected].text;
+    Clay_String stringCredits = { .chars = g_currentSong->licence, .isStaticallyAllocated = false, .length = strlen(g_currentSong->licence) };
+    Clay_String stringTitle = { .chars = g_currentSong->title, .isStaticallyAllocated = false, .length = strlen(g_currentSong->title) };
+    char* currentText = g_currentSong->elements[g_currentSongElementSelected].text;
     CLAY(CLAY_ID("Song1"), {
         .backgroundColor = COLOR_BLACK_BG, 
         .layout = {
@@ -240,7 +296,7 @@ void Layout_Song1() {
         //right image
         CLAY_AUTO_ID({
             //.aspectRatio = 9.0/16,
-            .image = { .imageData = images[0] },
+            .image = { .imageData = g_images[0] },
             .layout = {
                 //using this calculation as the aspectRatio field gives wrong results
                 //it fills the height and calculates the width required to be 9:16
@@ -275,7 +331,7 @@ void Layout_Song1() {
             }
 
         }) {
-            Layout_Component_Button(CLAY_STRING("Back"), Layout_Button_Back);
+            Layout_Component_Button(CLAY_STRING("Back"), Layout_Button_Back, NULL);
         }
     }
 }

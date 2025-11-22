@@ -7,11 +7,16 @@
 //Loads the images
 void Layout_Initialize(SDL_Renderer* renderer);
 
-void Layout_Button_Start(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData);
-void Layout_Paste(const char* text, void* userdata);
-void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData));
+void Layout_Button_StartSong(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData);
+void Layout_PasteSong(const char* text, void* userdata);
+void Layout_Button_StartBook(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData);
+void Layout_PasteBook(const char* text, void* userdata);
+
+void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData), void* userData);
 void Layout_Render();
 void Layout_Main();
+
+void Layout_BookButtonPressed(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData);
 
 typedef struct LayoutButtonTabbar {
     size_t id;
@@ -19,6 +24,7 @@ typedef struct LayoutButtonTabbar {
 
 void Layout_Button_Tabbar(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData);
 void Layout_Componenet_Tabbar();
+void Layout_BookSongSelect();
 void Layout_Song1();
 
 

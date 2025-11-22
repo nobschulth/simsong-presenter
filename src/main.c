@@ -1,11 +1,8 @@
-#include "SDL3/SDL_events.h"
-#include "SDL3/SDL_init.h"
-#include "SDL3/SDL_render.h"
-#include "SDL3_ttf/SDL_ttf.h"
 #include "clay/clay_layout.h"
 #define SDL_MAIN_USE_CALLBACKS 1
 #include <SDL3/SDL_main.h>
 #include <SDL3/SDL.h>
+#include "SDL3_ttf/SDL_ttf.h"
 #define CLAY_IMPLEMENTATION
 #include "clay/clay.h"
 #include "clay/clay_renderer.h"
@@ -26,6 +23,8 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
     SDL_SetAppMetadata("Simsong Presenter", "0.1.0", "com.nobschulth.simsong-presenter");
     Appstate* newAppstate = safe_malloc(sizeof(Appstate));
     newAppstate->previousTick = 0;
+    newAppstate->pointerDown = false;
+    newAppstate->scrollDelta = (Clay_Vector2){ .x = 0, .y = 0 };
 
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Could not initializse SDL: %s", SDL_GetError());
@@ -62,6 +61,7 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char *argv[]) {
     }
 
     const int fontCount = 3;
+    newAppstate->rendererData.fontLength = 0;
     newAppstate->rendererData.fonts = safe_malloc(sizeof(TTF_Font*) * fontCount);
     newAppstate->rendererData.fonts[0] = TTF_OpenFont("resources/CaskaydiaMonoNerdFont-Regular.ttf", 20);
     newAppstate->rendererData.fonts[1] = TTF_OpenFont("resources/FunnelSans/FunnelSans-Medium.ttf", 20);
@@ -107,6 +107,7 @@ SDL_AppResult SDL_AppEvent(void* voidstate, SDL_Event* event) {
             break;
         case SDL_EVENT_MOUSE_BUTTON_UP:
             appstate->pointerDown = !(event->button.button == SDL_BUTTON_LEFT);
+            SDL_Clay_RenderQueueTextRedraw(1);
             break;
         case SDL_EVENT_MOUSE_WHEEL:
             appstate->scrollDelta = (Clay_Vector2) { event->wheel.x, event->wheel.y };
@@ -150,7 +151,5 @@ SDL_AppResult SDL_AppIterate(void* voidstate) {
 void SDL_AppQuit(void* voidstate, SDL_AppResult result) {
     //sdl does the window and renderer cleanup, so no need to free them
     Appstate* appstate = (Appstate*)voidstate;
-    appstate_free(appstate);
-
-
+    Appstate_free(appstate);
 }

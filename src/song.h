@@ -15,7 +15,15 @@ typedef struct Song {
     size_t elementCount;
 } Song;
 
+typedef struct Book {
+    Song** songs;
+    size_t songCount;
+} Book;
+
 Song* Song_CreateFromString(const char* string);
-Song* Song_free(Song* song);
+void Song_free(Song* song);
+
+Book* Book_CreateFromString(const char* string);
+void Book_free(Book* book);
 
 #endif // !H_SONG
