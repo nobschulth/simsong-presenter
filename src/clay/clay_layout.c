@@ -83,6 +83,7 @@ void Layout_Button_StartSong(Clay_ElementId elementId, Clay_PointerData pointerD
         SDL_Clay_RenderQueueTextRedraw(2);
 #ifdef __EMSCRIPTEN__
         clipboard_listen_for_paste(Layout_PasteSong, NULL);
+        return;
 #endif
         char* clipboardText = SDL_GetClipboardText();
         Song* song = Song_CreateFromString(clipboardText);
@@ -106,6 +107,7 @@ void Layout_Button_StartBook(Clay_ElementId elementId, Clay_PointerData pointerD
         SDL_Clay_RenderQueueTextRedraw(2);
 #ifdef __EMSCRIPTEN__
         clipboard_listen_for_paste(Layout_PasteBook, NULL);
+        return;
 #endif
         char* clipboardText = SDL_GetClipboardText();
         Book* book = Book_CreateFromString(clipboardText);
@@ -116,7 +118,10 @@ void Layout_Button_StartBook(Clay_ElementId elementId, Clay_PointerData pointerD
 }
 
 void Layout_PasteBook(const char* text, void* userdata) {
-
+    SDL_Clay_RenderQueueTextRedraw(2);
+    Book* book = Book_CreateFromString(text);
+    if (!book) { return; }
+    g_currentBook = book;
 }
 
 void Layout_Component_Button(Clay_String text, void (*hoverFunc)(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData), void* userData) {
