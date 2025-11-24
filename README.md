@@ -4,6 +4,17 @@ This is a simple program to present songs from [Songselect](https://songselect.c
 ## Website
 You can find the newest version as github page here: https://nobschulth.github.io/simsong-presenter/
 
+## Songbook
+You can import multiple songs at once and select them from a list. Create a songbook in the following format:
+```plaintext
+<SONG1>
+&&&
+<SONG2>
+&&&
+<SONGX>
+```
+Replace the `<SONG>` placeholders with your songtext. Then just copy the whole text and paste it using the import songbook button.
+
 ## Building
 ```bash
 git clone https://github.com/nobschulth/simsong-presenter

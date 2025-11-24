@@ -163,17 +163,17 @@ void Layout_Main() {
         .layout = {
             .layoutDirection = CLAY_TOP_TO_BOTTOM,
             .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER },
-            .childGap = 20,
+            .childGap = 40,
             .sizing = { .height = CLAY_SIZING_GROW(), .width = CLAY_SIZING_GROW(0) },
         }
     }) {
-        CLAY_TEXT(CLAY_STRING("Copy a song from Songselect and press the button to start presenting"), CLAY_TEXT_CONFIG({
+        CLAY_TEXT(CLAY_STRING("Copy a song from Songselect and paste it to start presenting"), CLAY_TEXT_CONFIG({
             .textColor = COLOR_WHITE,
             .fontId = 1,
             .fontSize = 28 * getFontScale(),
         }));
         Layout_Component_Button(CLAY_STRING("Paste song from clipboard"), Layout_Button_StartSong, NULL);
-        Layout_Component_Button(CLAY_STRING("Paste book from clipboard"), Layout_Button_StartBook, NULL);
+        Layout_Component_Button(CLAY_STRING("Paste songbook from clipboard"), Layout_Button_StartBook, NULL);
     }
 }
 
