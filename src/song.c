@@ -90,6 +90,8 @@ Book* Book_CreateFromString(const char* string) {
 
 void Book_free(Book* book) {
     for (int i = 0; i < book->songCount; i++) {
-        free(book->songs);
+        Song_free(book->songs[i]);
     }
+    free(book->songs);
+    free(book);
 }

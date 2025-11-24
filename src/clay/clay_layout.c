@@ -43,8 +43,6 @@ int* g_tabButtonIdData = NULL;
 Book* g_currentBook = NULL;
 int* g_bookButtonIdData = NULL;
 
-
-
 void Layout_Initialize(SDL_Renderer* renderer) {
     const int imageCount = 1;
     g_images = safe_malloc(sizeof(SDL_Texture*) * imageCount);
@@ -67,7 +65,7 @@ void Layout_Quit() {
     }
 }
 
-void Layout_Button_Back(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
+void Layout_Button_SongBack(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
     if (pointerData.state == CLAY_POINTER_DATA_RELEASED_THIS_FRAME) {
         g_currentSongElementSelected = -1;
         if (!g_currentBook)
@@ -75,7 +73,14 @@ void Layout_Button_Back(Clay_ElementId elementId, Clay_PointerData pointerData, 
         g_currentSong = NULL;
         SDL_Clay_RenderQueueTextRedraw(1);
     }
+}
 
+void Layout_Button_BookBack(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
+    if (pointerData.state != CLAY_POINTER_DATA_RELEASED_THIS_FRAME) return;
+    Book_free(g_currentBook);
+    g_currentBook = NULL;
+    free(g_bookButtonIdData);
+    g_bookButtonIdData = NULL;
 }
 
 void Layout_Button_StartSong(Clay_ElementId elementId, Clay_PointerData pointerData, intptr_t userData) {
@@ -225,23 +230,38 @@ void Layout_BookSongSelect() {
     if (!g_bookButtonIdData) {
         g_bookButtonIdData = safe_malloc(sizeof(int) * g_currentBook->songCount);
     }
-    CLAY(CLAY_ID("SongSelect"), {
-        .backgroundColor = COLOR_BLACK_BG,
+    CLAY_AUTO_ID({
+        .backgroundColor = COLOR_BLACK_BG, 
         .layout = {
-            .layoutDirection = CLAY_TOP_TO_BOTTOM,
-            .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER },
-            .sizing = { .height = CLAY_SIZING_GROW(), .width = CLAY_SIZING_GROW() },
-            .padding = CLAY_PADDING_ALL(30),
-            .childGap = 20,
-        },
-        .clip = { .vertical = true, .childOffset = Clay_GetScrollOffset() },
-    }) {
-        for (int i = 0; i < g_currentBook->songCount; i++) {
-            g_bookButtonIdData[i] = i;
-            Clay_String stringButton = { .chars = g_currentBook->songs[i]->title, .isStaticallyAllocated = false, .length = strlen(g_currentBook->songs[i]->title) };
-            Layout_Component_Button(stringButton, Layout_Button_BookSongSelect, (g_bookButtonIdData + i));
+            .layoutDirection = CLAY_LEFT_TO_RIGHT,
+            .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_TOP },
+            .sizing = { .height = CLAY_SIZING_GROW(), .width = CLAY_SIZING_GROW() }
         }
-
+    }) {
+        CLAY(CLAY_ID("SongSelect"), {
+            .layout = {
+                .layoutDirection = CLAY_TOP_TO_BOTTOM,
+                .childAlignment = { .x = CLAY_ALIGN_X_CENTER, .y = CLAY_ALIGN_Y_CENTER },
+                .sizing = { .height = CLAY_SIZING_GROW(), .width = CLAY_SIZING_GROW() },
+                .padding = CLAY_PADDING_ALL(30),
+                .childGap = 20,
+            },
+            .clip = { .vertical = true, .childOffset = Clay_GetScrollOffset() },
+        }) {
+            for (int i = 0; i < g_currentBook->songCount; i++) {
+                g_bookButtonIdData[i] = i;
+                Clay_String stringButton = { .chars = g_currentBook->songs[i]->title, .isStaticallyAllocated = false, .length = strlen(g_currentBook->songs[i]->title) };
+                Layout_Component_Button(stringButton, Layout_Button_BookSongSelect, (g_bookButtonIdData + i));
+            }
+        }
+        CLAY_AUTO_ID({
+            .layout = {
+                .sizing = { .width = CLAY_SIZING_PERCENT(0), .height = CLAY_SIZING_PERCENT(1)},
+                .childAlignment = { .x = CLAY_ALIGN_X_RIGHT, .y = CLAY_ALIGN_Y_BOTTOM },
+            }
+        }) {
+            Layout_Component_Button(CLAY_STRING("Back"), Layout_Button_BookBack, NULL);
+        }
     }
 }
 
@@ -336,7 +356,7 @@ void Layout_Song1() {
             }
 
         }) {
-            Layout_Component_Button(CLAY_STRING("Back"), Layout_Button_Back, NULL);
+            Layout_Component_Button(CLAY_STRING("Back"), Layout_Button_SongBack, NULL);
         }
     }
 }
