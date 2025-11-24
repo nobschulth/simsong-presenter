@@ -16,9 +16,9 @@ typedef struct Appstate {
 //sets the global variable appsate (used for font scaling)
 void setAppstate(Appstate* appstate);
 
-void appstate_free(Appstate* appstate);
+void Appstate_free(Appstate* appstate);
 //quite useless but I leave it here
-bool appstate_load_font(Appstate* appstate, char* path);
+bool Appstate_LoadFont(Appstate* appstate, char* path);
 
 Clay_Dimensions SDL_MeasureText(Clay_StringSlice text, Clay_TextElementConfig *config, void *userData);
 void HandleClayErrors(Clay_ErrorData errorData);

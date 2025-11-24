@@ -11,7 +11,7 @@ void setAppstate(Appstate* appstate) {
     g_appstate = appstate;
 }
 
-void appstate_free(Appstate* appstate) {
+void Appstate_free(Appstate* appstate) {
     SDL_DestroyWindow(appstate->sdlWindow);
     SDL_DestroyRenderer(appstate->rendererData.renderer);
     TTF_DestroySurfaceTextEngine(appstate->rendererData.textEngine);
@@ -20,7 +20,7 @@ void appstate_free(Appstate* appstate) {
     }
 }
 
-bool appstate_load_font(Appstate* appstate, char* path) {
+bool Appstate_LoadFont(Appstate* appstate, char* path) {
     TTF_Font* font = TTF_OpenFont(path, 20);
     if (!font) {
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to load font in path \"%s\": %s", path, SDL_GetError());

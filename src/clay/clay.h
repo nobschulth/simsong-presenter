@@ -724,14 +724,14 @@ typedef struct Clay_RenderCommandArray {
 
 // Represents the current state of interaction with clay this frame.
 typedef CLAY_PACKED_ENUM {
+    // The left mouse button click or touch is not currently down / was released at some point in the past.
+    CLAY_POINTER_DATA_RELEASED,
     // A left mouse click, or touch occurred this frame.
     CLAY_POINTER_DATA_PRESSED_THIS_FRAME,
     // The left mouse button click or touch happened at some point in the past, and is still currently held down this frame.
     CLAY_POINTER_DATA_PRESSED,
     // The left mouse button click or touch was released this frame.
     CLAY_POINTER_DATA_RELEASED_THIS_FRAME,
-    // The left mouse button click or touch is not currently down / was released at some point in the past.
-    CLAY_POINTER_DATA_RELEASED,
 } Clay_PointerDataInteractionState;
 
 // Information on the current state of pointer interactions this frame.

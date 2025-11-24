@@ -21,7 +21,9 @@ Song* Song_CreateFromString(const char* string) {
     }
     //search for the elements
     for (int i = 0; i > -1; i++) {
-        if (string[i] != '\0' && string[i] == '\n' && string[i + 1] == '\n') {
+        bool stringEnds = string[i] == '\0' || string[i + 1] == '\0' || string[i + 2] == '\0';
+        bool bookSeperation = !stringEnds && string[i] == '&' && string[i + 1] == '&' && string[i + 2] == '&' && string[i - 1] == '\n';
+        if (string[i] != '\0' && string[i] == '\n' && string[i + 1] == '\n' && !bookSeperation) {
             if (song->elementCount == 0) {
                 song->elementCount++;
                 song->elements = safe_malloc(sizeof(SongElement));
@@ -43,24 +45,16 @@ Song* Song_CreateFromString(const char* string) {
             song->elements[song->elementCount - 1].text = strndup(string, i);
             string += i + 2;
             i = 0;
-        } else if (string[i] == '\0') {
+        } else if (string[i] == '\0' || bookSeperation) {
             song->licence = strndup(string, i);
             break;
         }
     }
 
-    printf("------\nSonginfo:\n\n");
-    printf("Titel: \"%s\"\n\n", song->title);
-    for (int i = 0; i < song->elementCount; i++) {
-        printf("Name: \"%s\"\n", song->elements[i].name);
-        printf("Text: \"%s\"\n\n", song->elements[i].text);
-    }
-    printf("Credits: \"%s\"\n", song->licence);
-
     return song;
 }
 
-Song* Song_free(Song* song) {
+void Song_free(Song* song) {
     for (int i = 0; i < song->elementCount; i++) {
         free(song->elements[i].text);
         free(song->elements[i].name);
@@ -69,4 +63,35 @@ Song* Song_free(Song* song) {
     free(song->licence);
     free(song->title);
     free(song);
+}
+
+Book* Book_CreateFromString(const char* string) {
+    if (!string) return NULL;
+    Book* book = safe_malloc(sizeof(Book));
+    book->songCount = 0;
+
+    int offset = 0;
+    while (true) {
+        if (book->songCount == 0) {
+            book->songs = safe_malloc(sizeof(Song*));
+        } else {
+            book->songs = safe_realloc(book->songs, sizeof(Song*) * (book->songCount + 1));
+        }
+        book->songCount++;
+
+        book->songs[book->songCount - 1] = Song_CreateFromString(string + offset);
+        char* ptr = strstr(string + offset, "\n&&&");
+        if (!ptr) break;
+        offset = ptr - string + 5;
+    }
+
+    return book;
+}
+
+void Book_free(Book* book) {
+    for (int i = 0; i < book->songCount; i++) {
+        Song_free(book->songs[i]);
+    }
+    free(book->songs);
+    free(book);
 }
