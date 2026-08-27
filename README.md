@@ -1,8 +1,11 @@
+# WARNING
+> This is a old version and should not be used anymore. Use https://nobschulth.github.io/simsong-presenter-2/ instead
+
 # Simsong Presenter
 This is a simple program to present songs from [Songselect](https://songselect.ccli.com/). Just copy a song to your clipboard and paste it using the button. You will automatically get a random design.
 
 ## Website
-You can find the newest version as github page here: https://nobschulth.github.io/simsong-presenter/
+You can find the legacy version as github page here: https://nobschulth.github.io/simsong-presenter/
 
 ## Songbook
 You can import multiple songs at once and select them from a list. Create a songbook in the following format:
